@@ -13,3 +13,21 @@
 4. Реализация оповещения (*)
 
     1. Сгенерированный ответ отправить через email или telegram
+
+### Развертывание
+
+1. Добавить telegram bot id в app/.env
+
+2. Запустить проект через `./docker-build.sh`
+
+3. Сделать POST запрос, используя chat_id из telegram (можно получить через @getmyid_bot бота)
+```bash
+curl --request POST \
+  --url http://localhost/paymentReport/generate \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"start_at": "2024-01-20",
+	"end_at": "2025-01-20",
+	"telegram_chat_id": 123456789
+}'
+```
